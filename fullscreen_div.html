@@ -4,38 +4,33 @@
     <meta charset="utf-8">
     <title>element</title>
     <style media="screen">
-      .element{
+      body{
+        background-color: #eee;
+      }
+      #element{
         width: 800px;
         height: 500px;
         padding: 0px;
         margin: 0px;
+        background-color: #fff;
       }
-      .controler{
-        bottom: 0px;
-        position: relative;
-        display: block;
-      }
-      .btnf{
+      #btn{
         padding: 0px;
         margin: 0px;
-        display: inline-block;
+        font-size: 40px;
       }
     </style>
   </head>
   <body>
-    <div class="element" id="element">
-      <div class="controler">
-        <span class="btnf">[]</span>
+    <div id="element">
+      <div class="">
+        <button id="btn">[ X ]</button>
       </div>
     </div>
     <span>look up the fullscreen element</span>
   </body>
-  <script src="jquery-3.1.1.min.js"></script>
   <script>
-    $(".btnf").click(function() {
-      toggleFullScreen();
-    });
-    function toggleFullScreen() {
+    document.getElementById('btn').onclick = function() {
       if ((document.fullScreenElement && document.fullScreenElement !== null) ||
       (!document.mozFullScreen && !document.webkitIsFullScreen)) {
         if (document.getElementById("element").requestFullScreen) {
