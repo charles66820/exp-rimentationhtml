@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>element</title>
+    <style media="screen">
+      .element{
+        width: 800px;
+        height: 500px;
+        padding: 0px;
+        margin: 0px;
+      }
+      .controler{
+        bottom: 0px;
+        position: relative;
+        display: block;
+      }
+      .btnf{
+        padding: 0px;
+        margin: 0px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="element" id="element">
+      <div class="controler">
+        <span class="btnf">[]</span>
+      </div>
+    </div>
+    <span>look up the fullscreen element</span>
+  </body>
+  <script src="jquery-3.1.1.min.js"></script>
+  <script>
+    $(".btnf").click(function() {
+      toggleFullScreen();
+    });
+    function toggleFullScreen() {
+      if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+      (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+        if (document.getElementById("element").requestFullScreen) {
+          document.getElementById("element").requestFullScreen();
+        } else if (document.getElementById("element").mozRequestFullScreen) {
+          document.getElementById("element").mozRequestFullScreen();
+        } else if (document.getElementById("element").webkitRequestFullScreen) {
+          document.getElementById("element").webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+        }
+      } else {
+        if (document.cancelFullScreen) {
+          document.cancelFullScreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitCancelFullScreen) {
+          document.webkitCancelFullScreen();
+        }
+      }
+    }
+  </script>
+</html>

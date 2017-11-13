@@ -1,0 +1,17 @@
+<input type="text" id="num" placeholder="nombre">
+<input type="text" id="base" placeholder="base">
+<input type="text" id="resbase" placeholder="base a calculer">
+<span> = </span>
+<span id="result">__</span><br>
+<button id="done">done</button>
+<script>
+var num, base, resbase;
+document.getElementById('done').onclick = function() {
+  num = document.getElementById('num').value;
+  base = document.getElementById('base').value;
+  resbase = document.getElementById('resbase').value;
+  if (resbase!=0) {
+    document.getElementById('result').innerHTML = parseInt(num, base).toString(resbase);
+  }
+}
+</script>
