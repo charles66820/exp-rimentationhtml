@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET["upload"])) {
   $name = $_FILES["file"]["name"];
-  $path = "./";
+  $path = "./uploads/";
   $uploadOk = 1;
   while (file_exists($path.$name)) {
     $name = $name+"1";
