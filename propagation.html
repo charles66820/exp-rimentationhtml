@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      #box{
+        width: 120px;
+        height: 120px;
+        background-color: blue;
+        -webkit-align-content: center;
+        align-content: center;
+        display: flex;
+      }
+      #parentelm{
+        width: 80px;
+        height: 80px;
+        background-color: green;
+        margin: auto;
+        -webkit-align-content: center;
+        align-content: center;
+        display: flex;
+      }
+      #childelm{
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div id="parentelm">
+        <div id="childelm">
+        </div>
+      </div>
+    </div>
+    <script>
+    document.getElementById("box").addEventListener("click", function(){
+        console.log("progress box");
+      }, false);
+      document.getElementById("parentelm").addEventListener("click", function(){
+        console.log("progress parente");
+      }, false);
+      document.getElementById("childelm").addEventListener("click", function(){
+        console.log("progress child");
+      }, false);
+      //stop propagation
+    </script>
+  </body>
+</html>
