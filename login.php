@@ -26,7 +26,7 @@ if (isset($_SESSION['id'])) {
 
 
 //connection a la base de donnée.
-$conn = mysqli_connect('localhost', 'usertest', '123456', 'webdata');
+$conn = mysqli_connect('localhost', 'root', '', 'webdata');
 
 if (!$conn){ 
 	die("connection à la db imposible! erreur: ".mysqli_connect_error());
