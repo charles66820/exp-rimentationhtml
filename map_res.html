@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      #box{
+        height: 370px;
+        position: relative;
+        margin: auto;
+        display: flex;
+      }
+      #map{
+        height: 370px;
+        width: 350px;
+      }
+      .mapline{
+        top: 12.5px;
+        width: 37px;
+        height: 2px;
+        background-color: black;
+        position: absolute;
+      }
+      .mapcrois{
+        top: 23px;
+        left: 6px;
+        width: 37px;
+        height: 2px;
+        background-color: black;
+        position: absolute;
+      }
+      #map-line{
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        background-color: white;
+        border-radius: 8px 0px 0px 8px;
+      }
+      #map-crois{
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        display: none;
+        background-color: white;
+        border-radius: 8px 0px 0px 8px;
+      }
+      #volet{
+        height: 370px;
+        width: 350px;
+        right: 0px;
+        position: absolute;
+        overflow-y: auto;
+        -webkit-transition: all .5s ease-in;
+        -moz-transition: all .5s ease-in;
+        transition: all .5s ease-in;
+      }
+      #volet:target #map-line{
+        display: none;
+      }
+      #volet:target #map-crois{
+        display: inherit;
+      }
+      #volet:target {
+        right: 0px;
+      }
+      #volet ol{
+        margin: 0px;
+        padding-top: 10px;
+        background-color: white;
+      }
+      @media screen and (min-width: 777px) {
+        #box{
+          width: 700px;
+        }
+        #map-m-btn{
+          display: none;
+        }
+      }
+
+      @media (max-width: 777px) {
+        #box{
+          width: 350px;
+          overflow: hidden;
+        }
+        #volet{
+          width: 300px;
+          padding-left: 50px;
+          right: -300px;
+        }
+        #map-m-btn{
+          left: 0px;
+          position: absolute;
+          display: block;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div id="map"></div>
+      <div id="volet">
+        <div id="map-m-btn">
+          <!-- boutton pour ouvrir le menu -->
+          <a id="map-line" href="#volet" >
+            <div class="mapline" style="left: 8px;"><div class="mapline"><div class="mapline"></div></div></div>
+          </a>
+          <!-- boutton pour fermmer le menu -->
+          <a id="map-crois" href="#">
+            <div class="mapcrois" style="transform: rotate(45deg);"></div>
+            <div class="mapcrois" style="transform: rotate(-45deg);"></div>
+          </a>
+        </div>
+        <ol>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+        </ol>
+      </div>
+    </div>
+    <script>
+      var map;
+      var marker;
+      var myLatlng = {lat: 46.4, lng: 2.35};
+      var zoom = 5;
+      function initMap() {
+        //crée la map
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatlng,
+          zoom: zoom,
+          mapTypeControl: false,
+          zoomControl: true,
+          zoomControlOptions: {
+            position: google.maps.ControlPosition.LEFT_CENTER
+          },
+          scaleControl: false,
+          streetViewControl: false,
+          fullscreenControl: false
+        });
+        map.addListener('center_changed', function() {
+          window.setTimeout(function() {
+            map.panTo(myLatlng);
+            map.setZoom(zoom);
+          }, 3000);
+        });
+      }
+      function markerclub(plat, plng, nom){
+        marker = new google.maps.Marker({
+          map: map,
+          position: {lat: plat, lng: plng},
+          title: nom
+        });
+        myLatlng = marker.getPosition();
+        zoom = 8;
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1aGMgaBh4FaqCe5i-T9YvYwCEh9O0R_c&callback=initMap"async defer></script>
+  </body>

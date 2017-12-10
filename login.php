@@ -9,7 +9,7 @@ if (isset($_SESSION['id'])) {
   echo '<form action="login.html" method="post">
     		<input type="text" name="user" value="" placeholder="Utilisateur">
     		<input type="password" name="password" value="" placeholder="Mots de passe">
-    		<input type="submit" name="submit" value="Connexion">	
+    		<input type="submit" name="submit" value="Connexion">
   		</form>
     	<br>
 		<form method="POST" action="login.php">
@@ -28,7 +28,7 @@ if (isset($_SESSION['id'])) {
 //connection a la base de donnée.
 $conn = mysqli_connect('localhost', 'root', '', 'webdata');
 
-if (!$conn){ 
+if (!$conn){
 	die("connection à la db imposible! erreur: ".mysqli_connect_error());
 }
 
