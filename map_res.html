@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map{
+        height: 500px;
+        width: 800px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <div id="map"></div>
+      <div id="vollet">
+        <ol>
+          <li><button type="button" onclick="markerclub(1.2,2.2,'test')"></button></li>
+        </ol>
+      </div>
+    </div>
+    <script>
+      var map;
+      var marker;
+      var myLatlng = {lat: 45.8720117, lng: 1.9240805};
+      var zoom = 5;
+      function initMap() {
+        //crée la map
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: myLatlng,
+          zoom: zoom,
+          mapTypeControl: false,
+          zoomControl: true,
+          zoomControlOptions: {
+            position: google.maps.ControlPosition.LEFT_CENTER
+          },
+          scaleControl: false,
+          streetViewControl: false,
+          fullscreenControl: false
+        });
+        map.addListener('center_changed', function() {
+          window.setTimeout(function() {
+            map.panTo(myLatlng);
+            map.setZoom(zoom);
+          }, 3000);
+        });
+      }
+      function markerclub(plat, plng, nom){
+        marker = new google.maps.Marker({
+          map: map,
+          position: {lat: plat, lng: plng},
+          title: nom
+        });
+        myLatlng = marker.getPosition();
+        zoom = 8;
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1aGMgaBh4FaqCe5i-T9YvYwCEh9O0R_c&callback=initMap"async defer></script>
+  </body>
