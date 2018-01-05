@@ -19,24 +19,39 @@
     text-align: center;
   }
 </style>
-
-
+<!-- modale -->
 <div id="modal-bg">
   <div class="modal">
       <p>le contenue de la modal : </p>
-      <img src="cat.jpg">
+      <!-- image dont le contenu vas changer -->
+      <img id="modalimg" src="cat.jpg">
       <button id="close">fermer</button>
   </div>
 </div>
 <p>clique sur l'image</p>
+
+<!-- image n°1 -->
 <img id="img" src="cat.jpg">
 
+<!-- image n°2 -->
+<img id="img2" src="kitten.jpg">
 
 <script type="text/javascript">
-document.getElementById('img').onclick = function() {
-  document.getElementById('modal-bg').style.display = "inherit";
+
+//quant on clique sur l'image 1
+document.getElementById('img').onclick =function() {
+  document.getElementById('modalimg').src = document.getElementById('img').src;//change la source de l'image de la modale
+  document.getElementById('modal-bg').style.display = "inherit";//affiche la modale
 }
+
+//quant on clique sur l'image 2
+document.getElementById('img2').onclick =function() {
+  document.getElementById('modalimg').src = document.getElementById('img2').src;//change la source de l'image de la modale
+  document.getElementById('modal-bg').style.display = "inherit";//affiche la modale
+}
+
+//quitte la modal
 document.getElementById('close').onclick = function() {
-  document.getElementById('modal-bg').style.display = "none";
+  document.getElementById('modal-bg').style.display = "none";//masque la modale
 }
 </script>
