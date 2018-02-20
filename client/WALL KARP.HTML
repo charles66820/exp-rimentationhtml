@@ -1,0 +1,110 @@
+<!doctype html><html>
+<head>
+  <title>KARPARTY Party!</title>
+  
+  <style>
+    * {
+      margin: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      background-image: url("http://i.imgur.com/Q5xm8nd.gif");
+      background-position: 0 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    body:after { /* image preload hack */
+      content: url('/static/assets/unmute.svg');
+      display: none;
+    }
+
+    #wrapper { /* footer fix hack */
+      min-height: 100%;
+      height: auto !important; 
+      height: 100%;
+      margin: 0 auto -25px; 
+    }
+    #wrapper .push {
+      height: 25px; 
+    }
+
+    footer {
+      position: fixed;
+      width: 100%;
+      bottom: 0; 
+      height: 26px;
+    }
+
+    #marquee {
+      width: 100%;
+      visibility: hidden;
+      position: fixed;
+      overflow: hidden;
+      white-space: nowrap;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+    }
+
+    #player {
+      visibility: hidden;
+      position: fixed;
+      width: 0;
+      height: 0;
+      left: 0;
+    }
+
+    #follow {
+      float: right;
+      padding-top: 5px;
+      padding-right: 10px;
+      font-family: verdana, sans-serif;
+      font-size: .75em; 
+      font-weight: bold;
+    }
+
+    #follow a {
+      color: white;
+      text-decoration: none;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: -webkit-linear-gradient(180deg,#f35626,#feab3a);
+    }
+
+    #follow a:link, a:visited { 
+      color: white;
+      -webkit-animation: rainbow 10s infinite linear;
+    }
+
+    #follow a:hover, a:active { 
+      color: white;
+      -webkit-animation: rainbow .25s infinite linear;
+    }
+
+    @-webkit-keyframes rainbow {
+      from {
+        -webkit-filter: hue-rotate(0deg);
+      } to {
+        -webkit-filter: hue-rotate(360deg);
+      }
+    }
+    #mute {
+      heigth: 25px;
+      width: 25px;
+      float: right;
+      margin-right: 11px;
+      cursor: pointer;
+      opacity: 1;
+      filter: alpha(opacity=100);
+    }
+
+  </style>
+</head>
+</html>

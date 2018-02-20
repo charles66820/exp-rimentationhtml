@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html onclick=test()>
+  <head>
+    <meta charset="UTF-8">
+    <title>Random colour</title>
+		<script>
+	function test(){
+		if (confirm("retourner a l'accuil") == true) {
+        window.location.href='/';
+		}
+	}
+     </script>
+  </head>
+<body>
+    <script type="text/javascript">
+      var bg_colour = Math.floor(Math.random() * 16777215).toString(16);
+      bg_colour = "#" + ("000000" + bg_colour).slice(-6);
+      document.bgColor = bg_colour;
+    </script>
+</body>
+</html>

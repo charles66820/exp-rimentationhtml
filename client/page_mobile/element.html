@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>element</title>
+		<style media="screen">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			header{
+				height: 56px;
+				width: 100%;
+			}
+			.menu{
+				height: 56px;
+				width: 100%;
+				position: fixed;
+				background-color: yellow;
+				z-index: 2;
+			}
+			#main{
+				margin: auto;
+				width: 70%;
+				display: flex;
+			}
+			#m-main{
+				height: 100%;
+				width: 100%;
+				top: 56px;
+				position: fixed;
+				z-index: 2;
+				overflow: auto;
+			}
+			.m-li{
+				width: 100%;
+				text-align: center;
+				padding: 18px 10px 18px 10px;
+				background-color: lime;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			.m-li:hover{
+				background-color: rgba(255, 0, 0, 0.5);
+				color: blue;
+				cursor: pointer;
+			}
+			#logo{
+				float: left;
+				height: 56px;
+				margin: 0px 8px 0px 8px;
+				cursor: pointer;
+			}
+			.li{
+				max-width: 100px;
+				text-decoration: none;
+				display: table-cell;
+				padding: 18px 10px 18px 10px;
+				border-bottom: 2px solid rgba(0,0,0,0);
+				background-color: lime;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			.li:hover{
+				background-color: rgba(255, 0, 0, 0.5);
+				color: blue;
+				border-bottom-color: green;
+				cursor: pointer;
+			}
+			#m-btn{
+				width: 56px;
+				height: 56px;
+				right: 0px;
+				top: 0px;
+				z-index: 3;
+				position: fixed;
+				background-color: magenta;
+				cursor: pointer;
+				display: none;
+			}
+			page{
+				display: block;
+				padding: 8px;
+			}
+			.player-box{
+				max-width: 854px;
+				height: 480px;
+			}
+			.player{
+				width: 100%;
+				height: 100%;
+				background-color: blue;
+				position: relative;
+			}
+			video{
+				width: 100%;
+				height: 100%;
+				top: 0px;
+				bottom: 0px;
+			}
+			.controler{
+				bottom: 0;
+    		height: auto;
+    		width: 100%;
+    		z-index: 1;
+    		direction: ltr;
+				position: absolute;
+				background-color: orange;
+			}
+			#UI{
+				display: none;
+			}
+			.player:hover #UI{
+				display: inherit;
+			}
+			.leftside{
+				display: inline-block;
+				padding: 8px;
+			}
+			.rightside{
+				display: inline-block;
+				padding: 8px;
+				right: 0px;
+				position: absolute;
+			}
+			#btnd{
+				display: inline-block;
+				cursor: pointer;
+			}
+			#btnf{
+				display: inline-block;
+				cursor: pointer;
+			}
+			.resultbox{
+				padding: 4px;
+				top: 40px;
+				right: 40px;
+				max-height: 100px;
+				max-width: 200px;
+				background-color: red;
+				position: absolute;
+				z-index: 1;
+			}
+			.result{
+				color: black;
+				background-color: green;
+			}
+			.container-test{
+				max-width: 900px;
+				margin-top: 8px;
+				margin-bottom: 8px;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			line{
+				top: 12.5px;
+				width: 40px;
+				height: 2px;
+				background-color: black;
+				position: absolute;
+			}
+			crois{
+				top: 28px;
+				left: 8px;
+				width: 40px;
+				height: 2px;
+				background-color: black;
+				position: absolute;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="menu">
+				<div id="main">
+					<img id="logo" src="logo.gif" height="56">
+					<div id="li">
+						<div class="li" style="border-bottom-color: green;">Home</div>
+						<div class="li">news</div>
+						<div class="li">contact</div>
+						<div class="li">tabspagefffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</div>
+						<div class="li">tabspage</div>
+						<div class="li">tabspage</div>
+						<div class="li">tabspage</div>
+						<div class="li">tabspage</div>
+					</div>
+				</div>
+			</div>
+			<div id="m-main" style="display:none;">
+				<div class="m-li">news</div>
+				<div class="m-li">contact</div>
+				<div class="m-li">tabspagefffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</div>
+				<div class="m-li">tabspage</div>
+				<div class="m-li">tabspage</div>
+				<div class="m-li">tabspage</div>
+				<div class="m-li">tabspage</div>
+			</div>
+			<div id="m-btn"><line style="left: 8px;"><line><line></line></line></line><crois style="transform: rotate(45deg);"></crois><crois style="transform: rotate(-45deg);"></crois></div>
+		</header>
+		<page>
+			<div class="player-box" id="player-box">
+				<div class="player" id="player">
+					<video poster="posterimage.jpg" id="vid">
+						<source src="download/Westworld.S01E09.FRENCH.720p.WEBRip.DD5.1.H.264-NEWZT-WwW.Zone-Telechargement.Ws.mkv" type="video/webm">
+					</video>
+					<div id="UI">
+						<div class="resultbox" id="resultbox">
+							<div id="result" class="result"></div>
+							<div id="result1" class="result"></div>
+							<div id="result2" class="result"></div>
+						</div>
+						<div class="controler">
+							<div class="leftside">
+								<span id="btnd">D</span>
+							</div>
+							<div class="rightside">
+								<span id="btnf">[]</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<span>look up the fullscreen element</span>
+			<p class="container-test">La mention « sp. nov. » dans l’appellation de la bactérie indique que celle-ci est une espèce nouvelle, mais en revanche, provient d’un genre connu à laquelle les scientifiques l’on apparentée, à savoir Solibacillus. Le succès de cette bactérie est surtout due à l’endroit où elle a été retrouvée : dans un filtre à particules fines. Celui-ci a été utilisé par l’ISS durant une quarantaine de jours comme l’indiquent les chercheurs dans une publication dans la revue International Journal of Systematic and Evolutionary Microbiology le 5 mai 2017.
+
+La bactérie est intacte et a donc résisté aux rayonnements cosmiques plus élevés qu’au niveau du sol, ainsi qu’à la microgravité. Les biologistes indiens et américains ont été plutôt ravis de cette trouvaille puisque leur but est justement d’étudier les organismes ayant vécu assez longtemps dans l’espace, comme l’explique un communiqué du Jet Propulsion Laboratory (JPL).
+
+Le but de ces recherches est de trouver un moyen de permettre aux astronautes de survivre plus aisément dans l’espace lors de voyages longue durée, des recherches évidemment motivées par la conquête spatiale et plus précisément par la colonisation de la planète Mars.
+
+Néanmoins, les chercheurs indiquent que la bactérie Solibacillus kalamii n’a aucune particularité pouvant être utile dans le champ de recherche évoqué. D’ailleurs, la découverte de micro-organismes dans l’ISS n’est pas vraiment quelque chose de très surprenant. Par exemple, des études menées par les chercheurs japonais de la JAXA dans le module Kibo ont déjà mis en évidence toute une colonie de bactéries et de champignons à l’échelle microscopique.</p>
+			<pre>
+				0
+				1
+				2
+				3
+				4
+				5
+				6
+				7
+				8
+				9
+				10
+				11
+				12
+				13
+				14
+				15
+				16
+				17
+				18
+				19
+				20
+				21
+				22
+				23
+				24
+				25
+				26
+				27
+				28
+				29
+				30
+			</pre>
+		</page>
+	</body>
+	<script>
+		function refchbox() {
+			document.getElementById("result").innerHTML = "IE : "+document.fullScreenElement;
+			document.getElementById("result1").innerHTML = "moz : "+document.mozFullScreen;
+			document.getElementById("result2").innerHTML = "webkit : "+document.webkitIsFullScreen;
+		}
+		setInterval(refchbox, 1000)
+	</script>
+	<script>
+		var x=0;
+		window.addEventListener("resize", deimplayer);
+		function deimplayer(){
+			var w = document.getElementById("player-box").offsetWidth;
+			document.getElementById("player-box").style.height = w*9/16+"px";
+			if (document.body.clientWidth<400) {
+				document.getElementsByClassName("resultbox")[0].style.display = "none";
+			}else {
+				document.getElementById("resultbox").style.display = "inherit";
+			}
+			if (document.body.clientWidth<768){
+				document.getElementById("li").style.display = "none";
+				document.getElementById("m-btn").style.display = "inherit";
+			}else {
+				document.getElementById("m-main").style.display = "none";
+				document.getElementById("li").style.display = "inherit";
+				document.getElementById("m-btn").style.display = "none";
+			}
+			x++
+		}
+		deimplayer()
+		var y=0;
+		document.getElementById("m-btn").onclick = function() {
+			if (y==0){
+				document.getElementById("m-main").style.display = "inherit";
+				document.body.style.overflow = "hidden";
+				document.getElementsByTagName("crois")[0].style.display = "inherit";
+				document.getElementsByTagName("crois")[1].style.display = "inherit";
+				document.getElementsByTagName("line")[0].style.display = "none";
+				y=1;
+			}else {
+				document.getElementById("m-main").style.display = "none";
+				document.body.style.overflow = "inherit";
+				document.getElementsByTagName("crois")[0].style.display = "none";
+				document.getElementsByTagName("crois")[1].style.display = "none";
+				document.getElementsByTagName("line")[0].style.display = "inherit";
+				y=0;
+			}1
+	 	}
+	</script>
+	<script>
+		var t;
+		document.getElementById("player").onmousemove = function() {
+			document.getElementById("UI").style.display = "inherit";
+			document.getElementById("player").style.cursor = "inherit";
+			clearTimeout(t);
+			t = setTimeout(function(){
+				document.getElementById("UI").style.display = "none";
+				document.getElementById("player").style.cursor = "none";
+			}, 3000);
+		}
+	</script>
+	<script>
+		// NOTE: play
+		document.getElementById("btnd").onclick = function() {
+			document.getElementById("vid").play();
+	 	}
+	</script>
+	<script>
+		document.getElementById("btnf").onclick = function() {
+			toggleFullScreen();
+	 	}
+	  	var elm = document.getElementById("player");
+	  	function toggleFullScreen() {
+		  	if ((document.fullScreenElement && document.fullScreenElement !== null) ||
+			  	(!document.mozFullScreen && !document.webkitIsFullScreen)) {
+			  	if (elm.requestFullScreen) {
+				  	elm.requestFullScreen();
+			  	} else if (elm.mozRequestFullScreen) {
+				  	elm.mozRequestFullScreen();
+			  	} else if (elm.webkitRequestFullScreen) {
+				  	elm.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+			  	}
+		  	} else {
+			  	if (document.cancelFullScreen) {
+				  	document.cancelFullScreen();
+			  	} else if (document.mozCancelFullScreen) {
+				  	document.mozCancelFullScreen();
+			  	} else if (document.webkitCancelFullScreen) {
+				  	document.webkitCancelFullScreen();
+			  	}
+		  	}
+	  	}
+  	</script>
+</html>
