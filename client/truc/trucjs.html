@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			body{
+				background-color:#eee;
+				margin: 0px;
+			}
+			.mvs{
+				margin: 10px;
+				display: inline-flex;
+				background-color: #fff;
+				box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+				border-radius: 4px;
+				overflow: hidden;
+			}
+			.mvs a{
+				color: #555;
+				text-decoration: none;
+				padding: 12.5px 8px 12.5px 8px;
+				box-shadow: 0 0 1px rgba(0,0,0,.1);
+				overflow: hidden;
+				display: inline-table;
+			}
+			.box{
+				height:200px;
+				width:600px;
+				margin:8px;
+				padding:4px;
+				background-color:#fff;
+				box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+			}
+			.pad{
+				height:104px;
+				width:116px;;
+			}
+			.btn{
+				background: blue;
+			}
+			.block{
+				height:100px;
+				width:100px;
+				background: red;
+			}
+			.comment{
+				min-height:50px;
+				max-height:100px;
+				width:500px;
+				background: transparent;
+				border: none;
+				outline: none;
+			}
+			.commentedit{
+				box-sizing: border-box;
+				box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+			}
+		</style>
+	</head>
+<body>
+	<div class=mvs>
+		<a href="/">accueil </a>
+		<a href="color">color </a>
+		<a href="filemanager">filemanager</a>
+		<a href="trucjs">truc en js</a>
+		<a href="trucjQuery">truc en jQuery</a>
+		<a href="http://pastebin.com/edit/wXxRjLSN#">Roboto</a>
+	</div>
+
+	<div class="box">
+		<div class="pad"><div class="block" id="block"></div></div><button class="btn" id="btnh" onclick="hsbtn()">hide</button>
+	</div>
+
+	<div class="box">
+		<div>Name :</div><div id="comment" class="comment" contenteditable="false">your comment</div>
+		<button class="btn" id ="btnc" onClick="cbtn()">modifier</button>
+	</div>
+
+	<div class="box">
+		<div>Statue :</div><div id="internetstatue">calcule en coure</div>
+	</div>
+
+	<div class="box">
+		<div>Time :</div><div id="clock">00:00:00</div>
+	</div>
+
+	<div class="box">
+		<div>Statue :</div><div id="timer">00:00:00</div><button class="btn" id="stopstart" onClick="timerbtn()">start</button>
+	</div>
+
+	<div class="box">
+		<div id="tcblock">...</div><button class="btn" id="tempobtn" onClick="tempo()">start</button>
+	</div>
+
+	<div class="box">
+		<div id="lang">...</div>
+		<select class="btn" id="langselect" onchange="sellang()">
+			<option value="en">En</option>
+			<option value="fr">fr</option>
+			<option value="es">es</option>
+		</select>
+	</div>
+
+	<div class="box">
+		log : <input id="logb" type="text" value=""/>(<input id="loga" type="text" value=""/>)= <label id="result"></label>
+		<button class="btn" onClick="logb()">validé</button>
+	</div>
+
+	<div class="box">
+	<input type="text" value="" id="lolz"/><input type="button" value="calculer" onClick="test()"/>
+	<label id="result1" value="..."></label>
+	</div>
+
+	<script src="assets/script_js.js"></script>
+</body>
+</html>
