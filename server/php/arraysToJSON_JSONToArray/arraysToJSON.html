@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>arraysToJSON</title>
+  </head>
+  <body>
+    <form class="" action="JSONToArray.php" method="post">
+      <input type="text" name="fruitsJSON" id="demo1" value="">
+      <input type="submit" name="submit" value="submit">
+    </form>
+    <script>
+    var fruits = ["Banana", "Orange", "Apple", "Mango"];
+    fruits.push("Lemon");
+    fruitsJ = JSON.stringify(fruits)
+    document.getElementById("demo1").value = fruitsJ;
+    </script>
+  </body>
+</html>

@@ -40,17 +40,17 @@
   function uploadimg(files) {
     var formData = new FormData();
     formData.append('file', files);
-      $.ajax({
-        url: "dropToUploadFiles.php?upload",
-        method: "post",
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function (result) {
-          console.log("rep : "+result);
-        },
-        error: function (error) { console.log("Error Upload : "+error); }
-      })
-    }
+    $.ajax({
+      url: "dropToUploadFiles.php?upload",
+      method: "post",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (result) {
+        console.log("rep : "+result);
+      },
+      error: function (error) { console.log("Error Upload : "+error); }
+    })
+  }
   </script>
 </html>
