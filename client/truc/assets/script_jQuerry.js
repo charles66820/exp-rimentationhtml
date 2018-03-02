@@ -169,10 +169,14 @@ $(document).ready(function(){
 	})
 
 	//mousemove
-	$( "#moveelm" ).on( "mousemove", function( event ) {
-		$( "#posep" ).text( "pageX: " + event.pageX + ", pageY: " + event.pageY );
-  	$( "#posec" ).text( "clientX: " + event.clientX + ", clientY: " + event.clientY );
-		$( "#poses" ).text( "screenX: " + event.screenX + ", screenY: " + event.screenY );
+	$( "#moveelm" ).on( "mousemove", function(e) {
+		$( "#posep" ).text( "Par rapport a la pages => pageX: " + e.pageX + ", pageY: " + e.pageY );
+		$( "#posec" ).text( "Par rapport a la feunétre => clientX: " + e.clientX + ", clientY: " + e.clientY );
+		$( "#poses" ).text( "Par rapport a l'écran => screenX: " + e.screenX + ", screenY: " + e.screenY );
+		$( "#poseo" ).text( "Par rapport a l'élément => offsetX: " + e.offsetX + ", offsetY: " + e.offsetY );
+		$( "#posel" ).text( "Par rapport a ? => layerX: " + e.layerX + ", layerY: " + e.layerY );
+		$( "#pose" ).text( "Par rapport a ? => x: " + e.x + ", y: " + e.y );
+		$( "#posem" ).text( "Par rapport a ? => movementX: " + e.movementX + ", movementY: " + e.movementY );
 	});
 
 	//resize
