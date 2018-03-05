@@ -10,8 +10,8 @@
       background-color: #eee;
       background-image: url('kitten.jpg');
       background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-position: 0px, 0px;
+      background-size: auto 670px;
+      background-position: 0px 0px;
     }
     </style>
     <script src="jquery-3.1.1.min.js"></script>
@@ -21,13 +21,13 @@
     <div class="result">
       <p id="result1"></p>
     </div>
-    <div id="view">
-
+    <div style="position:absolute">
+      <div id="view"></div>
     </div>
     <script>
     $( "#img" ).on( "mousemove", function(e) {
       $( "#result1" ).text( "offsetX: " + e.offsetX + ", offsetY: " + e.offsetY );
-      let test = "-"+(e.offsetX-50)+"px "+(e.offsetY)+"px";
+      let test = (((-e.offsetX)*2)+50)+"px "+(((-e.offsetY)*2)+50)+"px";
       $( "#view" ).css("background-position", test)
     });
 
