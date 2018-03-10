@@ -1,5 +1,5 @@
-<script src="js\jquery-3.3.1.min.js"></script>
-<link href="css\bootstrap.css" rel="stylesheet">
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 <style>
   .addx{
     vertical-align: middle;
@@ -8,6 +8,11 @@
     height: 80px;
     display: inline-block;
     box-shadow: 0 0 2px 0px rgba(0,0,0,0.2);
+    margin: 0 2px;
+    cursor: pointer;
+  }
+  .addx:hover{
+    background-color: #f8f8f8;
   }
   .line-x{
     top: calc(50% - 12px);
@@ -33,16 +38,17 @@
 <div class="col-xl-6">
   <div class="m-2" style="overflow:auto; position:relative">
     <img class="rounded mx-auto d-block" id="imgproduit" src="" data-bs-hover-animate="pulse" style="width:422px; max-width:none; height:385px;">
+    <button type="button" class="btn btn-danger" id="btmremoveimgproduit">X</button>
     <div id="addimgproduit" style="position:absolute; background-color:pink; top:0; left:0; width:100%; height:100%; min-width:422px; display:none">
-
     </div>
+    <input type="image" style="display:none;">
   </div>
   <div class="m-2" id="listimgproduit">
-    <img src="produit.jpg" style="width:80px;height: 80px;">
-    <img src="produit1.jpeg" style="width:80px;height: 80px;">
-    <img src="" style="width:80px;height: 80px;">
-    <img src="" style="width:80px;height: 80px;">
-    <img src="" style="width:80px;height: 80px;">
+    <img src="produit.jpg" data-image-id="4" style="width:80px;height: 80px;">
+    <img src="produit1.jpeg" data-image-id="1" style="width:80px;height: 80px;">
+    <img src="" data-image-id="" style="width:80px;height: 80px;">
+    <img src="" data-image-id="" style="width:80px;height: 80px;">
+    <img src="" data-image-id="" style="width:80px;height: 80px;">
     <div class="addx" id="btmaddimgproduit">
       <div class="line-x"></div>
       <div class="line-y"></div>
@@ -50,17 +56,117 @@
   </div>
 </div>
 <script>
-//affiche l'image de la liste qui a aiter cliquer
-$("#listimgproduit img").click(function(e) {
-  $("#imgproduit").attr("src", e.target.src);
-})
+$(function() {
+  let buttonactive = true;//let = var
+  let images = [];
+  let indeximage;
 
-//ajoute une image
-$("#btmaddimgproduit").click(function() {
-  console.log("test");
-  $("#addimgproduit").show();
-  $('<img src="" style="width:80px;height: 80px;">').insertBefore($("#listimgproduit div:first"));
-})
+  String.prototype.filename = function(extension){
+    var s= this.replace(/\\/g, '/');
+    s= s.substring(s.lastIndexOf('/')+ 1);
+    return extension? s.replace(/[?#].+$/, ''): s;
+  }
 
-//
+  let listimgproduit = document.getElementById('listimgproduit');
+  //récupére les image existente
+  for (var i = 0; i < listimgproduit.children.length-1; i++) {
+    images.push(
+      {
+        "id":listimgproduit.children[i].getAttribute('data-image-id'),
+        "imagename":listimgproduit.children[i].getAttribute('src').filename()
+      }
+    );
+  }
+
+  imagesJ = JSON.stringify(images)
+  console.log(imagesJ);
+
+
+  //affiche l'image de la liste qui a aiter cliquer
+  $("#listimgproduit img").click(function(e) {
+    let index = 0;
+    while (e.currentTarget.parentNode.children[index] != e.currentTarget) index++;
+    indeximage = index;
+    if (e.target.currentSrc != "") {
+      $("#imgproduit").attr("src", e.target.src);
+      $("#addimgproduit").hide();
+    }else {
+      $("#addimgproduit").show();
+    }
+  })
+
+  //ajoute une image
+  $("#btmaddimgproduit").click(function() {
+    if (buttonactive) {
+      $("#addimgproduit").show();
+      $(this).css({"cursor":"not-allowed"});
+      $('<img src="" data-image-id="none" style="width:80px;height: 80px; margin:0 2px">').insertBefore($("#listimgproduit div:first"));
+      buttonactive = false;
+    }
+  })
+
+  //supprimer image
+  $("#btmremoveimgproduit").click(function() {
+    //supprimer du jsonne
+    //listimgproduit.children[index].
+    //supprimer l'image sur le serveur
+    // TODO:  zjdfsjez ze ===============================================================================================
+  })
+
+  //désactive l'ouverture des fichier au moment du drop
+  document.addEventListener('drop', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  });
+  document.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    e.dataTransfer.effectAllowed = "none";
+    e.dataTransfer.dropEffect = "none";
+    e.stopPropagation();
+  });
+  document.getElementById('addimgproduit').addEventListener('dragover', function(e) {
+    e.preventDefault();
+    e.dataTransfer.effectAllowed = "copy";
+    e.dataTransfer.dropEffect = "copy";
+    e.stopPropagation();
+  });
+
+  //change le style et envois le fichier en fonction du drag/drop
+  $("#addimgproduit").on("dragover", function(e) {
+    e.preventDefault();
+    $(this).css({"border":"solid 2px rgba(0, 120, 255, 1)", "background-color":"rgb(150, 210, 255)"})
+    return false;
+  }).on("dragleave", function() {
+    $(this).css({"border":"none", "background-color":""})
+  }).on("click", function() {
+    $(this).next().click();
+  }).next().on("change", function(e){
+    uploadimg(e.target.files[0])
+  })
+  document.getElementById('addimgproduit').ondrop = function(e) {
+    $(this).css({"border":"none", "background-color":""});
+    e.preventDefault();
+    uploadimg(e.dataTransfer.files[0]);
+    e.stopPropagation();
+  }
+
+  //ajax uploade de l'image
+  function uploadimg(files) {
+    var formData = new FormData();
+    formData.append('upload', '');
+    formData.append('image', files);
+    $.ajax({
+      url: "assets/php/dropToUploadFiles.php",
+      method: "post",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function (result) {
+        console.log("rep : "+result);
+        images.push({"id":"none","imagename":result});
+      },
+      error: function (error) { console.log("Error Upload : "+error); }
+    })
+  }
+});
 </script>

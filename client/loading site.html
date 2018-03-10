@@ -22,11 +22,16 @@ div#load_screen > div#loading{
 window.addEventListener("load", function(){
 	var load_screen = document.getElementById("load_screen");
 	document.body.removeChild(load_screen);
+	//test
+	document.getElementById('test').onload = function(){
+		document.getElementById('test').innerHTML = 'poulpe';
+	};
 });
 </script>
 </head>
 <body>
 <div id="load_screen"><div id="loading">loading site</div></div>
+<div id="test">bonjoure</div>
 site here
 </body>
 </html>

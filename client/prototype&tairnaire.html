@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="output"></div>
+    <script>
+    //ajoute du prototype affiche() a la classe String
+    String.prototype.affiche = function(extension){
+      test = this;
+      //tairenaire
+      truc = extension? "propriéter": "pas de propriéter";
+      document.getElementById('output').innerHTML = test+"<br>"+truc;
+    }
+
+    //text a utiliser
+    let test = "je test le prototype sur la class String :)";
+    
+    </script>
+    <br>
+    <button type="button" name="button" onclick="test.affiche();">test.affiche()</button>
+    <button type="button" name="button" onclick="test.affiche('p');">test.affiche('p')</button>
+  </body>
+</html>

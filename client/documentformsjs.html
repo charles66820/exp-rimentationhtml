@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>document.formesjs</title>
+  </head>
+  <body>
+    <form name="produit" action="" method="post">
+      <input type="text" name="nom" value="">
+      <input type="text" name="prix" value="">
+      <input type="button" onclick="formsbutton()" value="button">
+    </form>
+    <script>
+    function formsbutton() {
+      document.write(document.forms.produit.elements.nom.value + document.forms.produit.elements.prix.value);
+    }
+    </script>
+  </body>
+</html>
