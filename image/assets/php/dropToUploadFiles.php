@@ -22,8 +22,8 @@ if (isset($_POST["upload"])) {
     $uploadOk = 0;
   }
 
-if ($uploadOk && @move_uploaded_file($_FILES["image"]["tmp_name"], $path.$name)) {
-    echo basename($name);
+  if ($uploadOk && @move_uploaded_file($_FILES["image"]["tmp_name"], $path.$name)) {
+      echo basename($name);
   } else {
     header('X-Error-Message: upload error', true, 500);
     die();
