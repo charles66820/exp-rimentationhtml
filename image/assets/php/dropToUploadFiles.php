@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST["upload"])) {
-  $path = "../img/imageuploads/";
+  $path = "../img/imagesupload/";
   $name = basename($_FILES["image"]["name"]);
   $actual_name = pathinfo($name,PATHINFO_FILENAME);
   $extension = pathinfo($name, PATHINFO_EXTENSION);

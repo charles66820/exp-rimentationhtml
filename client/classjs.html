@@ -1,0 +1,30 @@
+<script>
+let pokemon = {
+  nom:"",
+  level:4,
+
+  pokemon: function() {
+
+  },
+  SetNom: function(pNom) {
+      this.nom = pNom;
+  },
+  GetNom: function(){
+    return this.nom;
+  },
+  SetLevel: function(pLevel) {
+      this.level = pLevel;
+  },
+  GetLevel: function(){
+    return this.level;
+  }
+}
+
+let unPokemon = Object.create(pokemon);
+
+unPokemon.SetNom("pikachu");
+unPokemon.SetLevel(6);
+
+document.write("nom : "+unPokemon.GetNom()+"<br> niveau : "+unPokemon.GetLevel())
+
+</script>
