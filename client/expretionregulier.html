@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Expretion regulier</title>
+  </head>
+  <body>
+    <input type="text" id="text" placeholder="chaine de text">
+    <input type="text" id="patt" placeholder="pattern">
+    <button onclick="testreg()">test</button>
+    <div>
+      <span>paterne match : </span><span id="resultTest"></span>
+    </div>
+    <div>
+      <span> return : </span><span id="resultExec"></span>
+    </div>
+    <script>
+    function testreg() {
+      let str = document.getElementById('text').value
+      let patt = new RegExp(document.getElementById('patt').value);
+      document.getElementById("resultTest").innerHTML = patt.test(str);
+      document.getElementById("resultExec").innerHTML = patt.exec(str);
+    }
+    </script>
+  </body>
+</html>
