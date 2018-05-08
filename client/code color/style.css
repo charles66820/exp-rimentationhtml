@@ -1,0 +1,38 @@
+.syntax--comment {
+  color: #5c6370;
+  font-style: italic;
+}
+.syntax--variable {
+  color: #e06c75;
+}
+.syntax--attribute-name {
+  color: #d19a66;
+}
+.syntax--string {
+  color: #98c379
+}
+.syntax--id {
+  color: #61afef;
+}
+.syntax--storage {
+  color: #c678dd;
+}
+.syntax--constant {
+  color: #d19a66;
+}
+
+/* class by-pass  class in string*/
+.syntax--string>.syntax--variable,.syntax--string>.syntax--attribute-name,.syntax--string>.syntax--id,.syntax--string>.syntax--storage,.syntax--string>.syntax--comment,.syntax--string>.syntax--constant {
+  color: #98c379
+}
+
+/* class by-pass  class in coment*/
+.syntax--comment>.syntax--variable,.syntax--comment>.syntax--attribute-name,.syntax--comment>.syntax--id,.syntax--comment>.syntax--storage,.syntax--comment>.syntax--string,.syntax--comment>.syntax--constant {
+  color: #5c6370;
+  font-style: italic;
+}
+
+/* class by-pass  class in coment*/
+.syntax--constant>.syntax--variable,.syntax--constant>.syntax--attribute-name,.syntax--constant>.syntax--id,.syntax--constant>.syntax--storage,.syntax--constant>.syntax--string,.syntax--constant>.syntax--comment {
+  color: #d19a66;
+}
