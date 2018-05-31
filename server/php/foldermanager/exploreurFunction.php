@@ -9,33 +9,33 @@ function isValideName(string $name) {
   }
 }
 
-function isValidePatch(string $patch) {
-  if (stristr($patch, "../") || stristr($patch, "..\\") || strstr($patch, "*") || strstr($patch, "?")) {
+function isValidePath(string $path) {
+  if (stristr($path, "../") || stristr($path, "..\\") || strstr($path, "*") || strstr($path, "?")) {
     return false;
-  } elseif (strstr($patch, "\"") || strstr($patch, "<") ||strstr($patch, ">") || strstr($patch, "|")) {
+  } elseif (strstr($path, "\"") || strstr($path, "<") ||strstr($path, ">") || strstr($path, "|")) {
     return false;
   } else {
     return true;
   }
 }
 
-function isAuthorizedPatch(string $patch, array $homePatchs) {
-  foreach ($homePatchs as $homePatch) {
-    $patch = str_replace('\\', '/', $patch);
-    $homePatch = str_replace('\\', '/', $homePatch);
-    $homePatch = preg_replace('/\//i', '\\/', $homePatch);
-    if (preg_match('/^'.$homePatch.'(.*)$/', $patch)) {
+function isAuthorizedPath(string $path, array $homePaths) {
+  foreach ($homePaths as $homePath) {
+    $path = str_replace('\\', '/', $path);
+    $homePath = str_replace('\\', '/', $homePath);
+    $homePath = preg_replace('/\//i', '\\/', $homePath);
+    if (preg_match('/^'.$homePath.'(.*)$/', $path)) {
       return true;
     }
   }
   return false;
 }
 
-function showFolders(string $patch) {
-  $open = opendir($patch);
+function showFolders(string $path) {
+  $open = opendir($path);
   $directories = [];
   while (($directory = readdir($open)) !== false){
-    if (is_dir($patch.$directory) && $directory != "." && $directory != ".."){
+    if (is_dir($path.$directory) && $directory != "." && $directory != ".."){
       array_push($directories, $directory);
     }
   }
@@ -47,11 +47,11 @@ function showFolders(string $patch) {
   return $directories;
 }
 
-function showFiles(string $patch) {
-  $open = opendir($patch);
+function showFiles(string $path) {
+  $open = opendir($path);
   $files = [];
   while (($file = readdir($open)) !== false){
-    if (is_file($patch.$file) && $file != "." && $file != ".."){
+    if (is_file($path.$file) && $file != "." && $file != ".."){
       array_push($files, $file);
     }
   }

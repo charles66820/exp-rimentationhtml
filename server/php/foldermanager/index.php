@@ -5,12 +5,12 @@ $list = ["C://", "/mnt/", "/"];
 
 if (isset($_GET["patch"])) {
   $patch = $_GET["patch"];
-  if (!isValidePatch($patch)) {
+  if (!isValidePath($patch)) {
     echo "erreur chars <br>";
     echo $patch.'<br>';
   } else {
     echo $patch.'<br>';
-    if (isAuthorizedPatch($patch, (array)$list)) {
+    if (isAuthorizedPath($patch, (array)$list)) {
       if (file_exists($patch)) {
         $folders = showFolders($patch);
         if ($folders) {
