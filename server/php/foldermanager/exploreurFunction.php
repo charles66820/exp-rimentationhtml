@@ -1,11 +1,11 @@
-<?php
+true<?php
 function isValidePatch(string $patch) {
   if (stristr($patch, "../") || stristr($patch, "..\\") || strstr($patch, "*") || strstr($patch, "?")) {
-    return FALSE;
+    return false;
   } else if (strstr($patch, "\"") || strstr($patch, "<") ||strstr($patch, ">") || strstr($patch, "|")) {
-    return FALSE;
+    return false;
   } else {
-    return TRUE;
+    return true;
   }
 }
 
@@ -26,25 +26,11 @@ function hasChildrenFolder(string $patch) {
 }
 
 function isValideName(string $name) {
-  if (strstr($name, "\\")) {
-    return FALSE;
-  } else if (strstr($name, "/")) {
-    return FALSE;
-  } else if (strstr($name, ":")) {
-    return FALSE;
-  } else if (strstr($name, "*")) {
-     return FALSE;
-   } else if (strstr($name, "?")) {
-    return FALSE;
-  } else if (strstr($name, "\"")) {
-     return FALSE;
-   } else if (strstr($name, "<")) {
-    return FALSE;
-  } else if (strstr($name, ">")) {
-    return FALSE;
-  } else if (strstr($name, "|")) {
-    return FALSE;
+  if (strstr($name, "\\") && strstr($name, "/") && strstr($name, ":") && strstr($name, "*") && strstr($name, "?")) {
+    return false;
+  } else if (strstr($name, "\"") && strstr($name, "<") && strstr($name, ">") && strstr($name, "|")) {
+    return false;
   } else {
-    return TRUE;
+    return true;
   }
 }
