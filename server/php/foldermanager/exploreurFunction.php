@@ -2,7 +2,7 @@
 function isValidePatch(string $patch) {
   if (stristr($patch, "../") || stristr($patch, "..\\") || strstr($patch, "*") || strstr($patch, "?")) {
     return false;
-  } else if (strstr($patch, "\"") || strstr($patch, "<") ||strstr($patch, ">") || strstr($patch, "|")) {
+  } elseif (strstr($patch, "\"") || strstr($patch, "<") ||strstr($patch, ">") || strstr($patch, "|")) {
     return false;
   } else {
     return true;
