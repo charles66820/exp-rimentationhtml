@@ -1,4 +1,4 @@
-true<?php
+<?php
 function isValidePatch(string $patch) {
   if (stristr($patch, "../") || stristr($patch, "..\\") || strstr($patch, "*") || strstr($patch, "?")) {
     return false;
