@@ -43,10 +43,8 @@ function showFolders(string $patch) {
   if (!empty($directories)){
     sort($directories);
     reset($directories);
-    return $directories;
-  } else {
-    return false;
   }
+  return $directories;
 }
 
 function showFiles(string $patch) {
@@ -61,8 +59,6 @@ function showFiles(string $patch) {
   if (!empty($files)){
     sort($files);
     reset($files);
-    return $files;
-  } else {
-    return false;
   }
+  return $files;
 }
