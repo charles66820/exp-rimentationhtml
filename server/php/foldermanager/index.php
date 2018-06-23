@@ -4,15 +4,16 @@ include 'exploreurFunction.php';
 $list = ["C://", "/mnt/", "/"];
 
 if (isset($_GET["patch"])) {
-  $patch = $_GET["patch"];
-  if (!isValidePath($patch)) {
+  $path = $_GET["patch"];
+  if (!isValidePath($path)) {
     echo "erreur chars <br>";
-    echo $patch.'<br>';
+    echo $path.'<br>';
   } else {
-    echo $patch.'<br>';
-    if (isAuthorizedPath($patch, (array)$list)) {
-      if (file_exists($patch)) {
-        $folders = showFolders($patch);
+    $path = str_replace('\\', '/', $path);
+    echo $path.'<br>';
+    if (isAuthorizedPath($path, (array)$list)) {
+      if (file_exists($path)) {
+        $folders = showFolders($path);
         if ($folders) {
           foreach ($folders as $folder) {
             echo $folder.'<br>';
@@ -20,7 +21,7 @@ if (isset($_GET["patch"])) {
         } else {
           echo "folder not containe folders<br>";
         }
-        $files = showFiles($patch);
+        $files = showFiles($path);
         if ($files) {
           foreach ($files as $file) {
             echo $file.'<br>';
@@ -38,7 +39,7 @@ if (isset($_GET["patch"])) {
 }
 ?>
 <form action="" method="get">
-  <input type="text" name="patch" value="<?php echo isset($_GET["patch"])?$patch:"" ?>">
+  <input type="text" name="patch" value="<?php echo isset($_GET["patch"])?$path:"" ?>">
   <input type="submit" name="" value="valider">
 </form>
 <br>

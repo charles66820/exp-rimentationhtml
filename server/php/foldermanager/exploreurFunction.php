@@ -20,8 +20,8 @@ function isValidePath(string $path) {
 }
 
 function isAuthorizedPath(string $path, array $homePaths) {
+  $path = str_replace('\\', '/', $path);
   foreach ($homePaths as $homePath) {
-    $path = str_replace('\\', '/', $path);
     $homePath = str_replace('\\', '/', $homePath);
     $homePath = preg_replace('/\//i', '\\/', $homePath);
     if (preg_match('/^'.$homePath.'(.*)$/', $path)) {
