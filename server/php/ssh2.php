@@ -12,4 +12,3 @@ echo $o.'<br>';
 
 echo '<br>';
 echo "hello";
-?>
