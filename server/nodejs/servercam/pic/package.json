@@ -1,0 +1,15 @@
+{
+  "name": "servercam",
+  "version": "0.1.0",
+  "description": "test cam on server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "charles66820",
+  "license": "ISC",
+  "dependencies": {
+    "node-webcam": "^0.4.3"
+  },
+  "devDependencies": {}
+}

@@ -1,4 +1,5 @@
 <?php
-require "Spyc.php";
-$Data = Spyc::YAMLLoad('toto.yml');
+include "spyc.php"
+
+$data = Spyc::YAMLLoad('toto.yml');
 var_dump($Data);
