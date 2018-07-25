@@ -10,7 +10,7 @@ const webcam_server = new LiveCam({
     // this server broadcasts GStreamer's video frames
     // for consumption in browser side.
     'broadcast_addr' : 'ppe2.ddns.net',
-    'broadcast_port' : 25565,
+    'broadcast_port' : 6187,
 
     // address and port of GStreamer's tcp sink
     'gst_tcp_addr' : '127.0.0.1',
@@ -25,7 +25,7 @@ const webcam_server = new LiveCam({
     'webcam' : {
 
         // should frames be converted to grayscale (default : false)
-        'grayscale' : true,
+        'grayscale' : false,
 
         // should width of the frame be resized (default : 0)
         // provide 0 to match webcam input
