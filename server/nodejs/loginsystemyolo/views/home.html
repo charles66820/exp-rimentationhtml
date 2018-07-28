@@ -35,25 +35,7 @@
           </li>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <form method="post" action="/connexion">
-              <div class="input-group input-group-md">
-                <input type="text" class="form-control" style="width:100px" placeholder="Username" name="user">
-                <input type="text" class="form-control" style="width:110px" placeholder="Passeword" name="password">
-                <div class="input-group-append">
-                  <button class="btn btn-default" type="submit">
-                    <i class="fa fa-search"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </li>
-          <span class="navbar-text ml-auto d-none">
-            <a href="#"><img class="rounded-circle" src="" alt="logo" style="width:40px;">Navbar text</a>
-          </span>
+          {{ log }}
         </ul>
       </div>
     </nav>
