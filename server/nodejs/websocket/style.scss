@@ -1,0 +1,59 @@
+.chat{
+  width: 500px;
+  height: 334px;
+  padding: 8px;
+  position: relative;
+  box-shadow: 1px 0 5px 0 rgba(0,0,0,0.2), 1px 0 5px 0 rgba(0,0,0,0.2), 1px 0 5px 0 rgba(0,0,0,0.2);
+  .messagebox{
+    width: 500px;
+    height: 300px;
+    overflow: auto;
+    box-shadow: inset 1px 0 5px 0 rgba(0,0,0,0.2), inset 1px 0 5px 0 rgba(0,0,0,0.2), inset 1px 0 5px 0 rgba(0,0,0,0.2);
+    .message{
+      margin: 8px;
+    }
+  }
+  .newmessage{
+    margin-top: 8px;
+    display: flex;
+    #newmessagefeild{
+      width: 455px;
+      height: 22px;
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      resize: none;
+    }
+    button {
+      width: 40px;
+      height: 28px;
+      line-height: 0px;
+      font-size: 30px;
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+  ::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar:hover {
+      height: 15px;
+      width: 15px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #D2D2D2;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #4f4f4f;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #111;
+  }
+
+  .messagebox:hover::-webkit-scrollbar {
+    width: 15px;
+  }
+}

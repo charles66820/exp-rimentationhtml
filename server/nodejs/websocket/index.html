@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test web socket</title>
+    <style>
+      .chat{width:500px;height:334px;padding:8px;position:relative;box-shadow:1px 0 5px 0 rgba(0,0,0,.2),1px 0 5px 0 rgba(0,0,0,.2),1px 0 5px 0 rgba(0,0,0,.2)}.chat .messagebox{width:500px;height:300px;overflow:auto;box-shadow:inset 1px 0 5px 0 rgba(0,0,0,.2),inset 1px 0 5px 0 rgba(0,0,0,.2),inset 1px 0 5px 0 rgba(0,0,0,.2)}.chat .messagebox .message{margin:8px}.chat .newmessage{margin-top:8px;display:flex}.chat .newmessage #newmessagefeild{width:455px;height:22px;border-top-left-radius:8px;border-bottom-left-radius:8px;resize: none;}.chat .newmessage button{width:40px;height:28px;line-height:0;font-size:30px;border-top-right-radius:8px;border-bottom-right-radius:8px}.chat ::-webkit-scrollbar{height:4px;width:4px}.chat ::-webkit-scrollbar:hover{height:15px;width:15px}.chat ::-webkit-scrollbar-track{background:#d2d2d2}.chat ::-webkit-scrollbar-thumb{background:#4f4f4f}.chat ::-webkit-scrollbar-thumb:hover{background:#111}.chat .messagebox:hover::-webkit-scrollbar{width:15px}
+    </style>
+  </head>
+  <body>
+    <div class="chat">
+      <div class="messagebox" id="messages"></div>
+      <div class="newmessage">
+        <form style="display:inherit" method="post" action="javascript:void(0);" id="newmessageform">
+          <input type="text" id="newmessagefeild"><!-- </textarea> -->
+          <button type="submit">⌲</button>
+        </form>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+    var socket = io.connect('http://magicorp.fr:6080');
+    socket.on('news', function (data) {
+      console.log('data of "/" namspace from server : ', data);
+      socket.emit('my other event', { my: 'data' });
+    });
+
+    var socket2 = io('/messager');
+    socket2.on('hi', function(data) {
+      console.log('data of "/messager" namspace from server : ', data);
+      let testmsg = document.createTextNode(data.msg);
+      let pmsg = document.createElement("p");
+      pmsg.appendChild(testmsg);
+      let elmmsg = document.createElement("div");
+      elmmsg.appendChild(pmsg);
+      elmmsg.className += "message";
+      document.getElementById('messages').appendChild(elmmsg);
+      document.getElementById('messages').scrollTop = "99999999";
+    });
+
+    document.getElementById('newmessageform').addEventListener('submit', function() {
+      let textfeild = document.getElementById('newmessagefeild');
+      if (textfeild.value != '') {
+        socket2.emit('onemessage', {
+          msg: textfeild.value
+        });
+        textfeild.value = '';
+      };
+      return false;
+    });
+    </script>
+  </body>
+</html>
