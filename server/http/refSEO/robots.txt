@@ -1,0 +1,7 @@
+User-agent: Twitterbot
+Disallow:
+
+User-agent: *
+Disallow: /karp.png
+
+Sitemap: http://dev.magicorp.fr:8888/sitemap.xml
