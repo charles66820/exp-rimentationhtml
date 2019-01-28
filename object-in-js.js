@@ -1,53 +1,17 @@
-/**
-* Text.
-*
-* @param {string} [title] The title of the task
-* @param {number} id The id of the model to update
-* @param {object} data The properties to update and their new value
-* @param {function} [callback] The callback to fire after the model is created
-*/
-Model.prototype.create = function (title, callback) {
-  title = title || '';
-  callback = callback || function () {};
-
-  this.testv = title;
-};
-
 'use strict';
-var Model = function(v) {
-    this.testv = v,
-    this.create = function (title) {
-        title = title || '';
-        this.testv = title;
-    },
-
-	this.update = function (id, data) {
-		this.testv = id+data;
-	},
-
-	this.remove = function (id) {
-		this.testv = id;
-	}
-};
-
-var firsttest = new Model("truc");
-console.log(firsttest);
-//============================================================
-'use strict';
-var Animale = function() {
+var Animale = function(plbl = null) {
+    this.lbl = plbl,
     this.pv = 20,
-
-	this.add = function () {
-		this.pv += 1;
-	},
-
-	this.sub = function () {
-		this.pv -= 1;
-	}
+    this.add = function () {
+        this.pv += 1;
+    },
+    this.sub = function () {
+        this.pv -= 1;
+    }
 };
 
 var cat = function () {
-    Animale.apply(this,arguments)
+    Animale.apply(this,arguments) // équivalent au BASE (C#) ou SUPER (JAVA)
     this.name = "";
     this.setname = function (p) {
         this.name = p;
@@ -57,23 +21,19 @@ var cat = function () {
     }
 }
 
-var secondetest = new Animale();
-console.log(secondetest);
+var animal1 = new Animale();
+console.log(animal1);
 
-var firsttest = new cat();
-firsttest.add();
-firsttest.setname("boubou");
-console.log(firsttest.getname());
-console.log(firsttest);
+var cat1 = new cat('chat');
+cat1.add();
+cat1.setname("boubou");
+console.log(cat1.getname());
+console.log(cat1);
 
-var firsttest = new cat();
-firsttest.sub();
-firsttest.sub();
-firsttest.setname("truc");
-console.log(firsttest.getname());
-console.log(firsttest);
+var cat2 = new cat();
+cat2.sub();
+cat2.sub();
+cat2.setname("truc");
+console.log(cat2.getname());
+console.log(cat2);
 
-var zetest = new Animale();
-zetest.sub();
-zetest.sub();
-console.log(zetest);
