@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+		body{
+			background-color:#eee;
+			margin: 0px;
+		}
+		.mvs{
+			margin: 10px;
+			display: inline-flex;
+			background-color: #fff;
+			box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+			border-radius: 4px;
+			overflow: hidden;
+		}
+		.mvs a{
+			color: #555;
+			text-decoration: none;
+			padding: 12.5px 8px 12.5px 8px;
+			box-shadow: 0 0 1px rgba(0,0,0,.1);
+			overflow: hidden;
+			display: inline-table;
+		}
+		.cursor{
+      background-color: white;
+      cursor: progress;
+      margin: 8px;
+			display: table-caption;
+    }
+		</style>
+	</head>
+	<body>
+		<div class=mvs>
+			<a href="/">accueil</a>
+			<a href="/color.html">color</a>
+		</div>
+		<button onclick="getLocation()">Try It</button>
+
+		<div class="cursor">heu...</div>
+
+		<p id="locat"></p>
+
+		<script>
+		var x = document.getElementById("locat");
+
+		function getLocation() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(function(position) {
+					x.innerHTML = "Latitude: " + position.coords.latitude
+					+ "<br>Longitude: " + position.coords.longitude
+					+ "<br>présision: " + position.coords.accuracy
+					+ "<br>altitude: " + position.coords.altitude
+					+ "<br>presision de l'altitude: " + position.coords.altitudeAccuracy
+					+ "<br>heading: " + position.coords.heading
+					+ "<br>vitesse: " + position.coords.speed;
+				});
+			} else {
+				x.innerHTML = "la geolocation apo n'es pas disponible dans cotre navigateur.";
+			}
+		}
+		</script>
+	</body>
+</html>
