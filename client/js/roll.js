@@ -1,1 +1,0 @@
-(()=>{let i = 10;document.querySelector("html").addEventListener("mousemove", function(event) {this.style.position = "absolute";this.style.top = 0;this.style.bottom = 0;this.style.left = 0;this.style.right = 0;this.style.transform = "rotate("+i+"deg)";i+=10;});})()
