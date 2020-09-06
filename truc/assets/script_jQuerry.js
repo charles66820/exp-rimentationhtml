@@ -1,14 +1,5 @@
 $(document).ready(function(){
 
-	//attribute
-	$("#btna").click(function(){
-		$("#attr").text(" ").append($("#eattr").attr("yolo"));
-	});
-	$("#btnra").click(function(){
-		$("#eattr").removeAttr("yolo");
-		$("#attr").text(" ").append("attribut remouve");
-	});
-
 	//add before and after or move element
 	$("#btnaddb").click(function(){
 		$("#addb").prepend("<div>text</div>");
