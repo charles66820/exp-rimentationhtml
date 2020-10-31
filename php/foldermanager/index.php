@@ -3,8 +3,8 @@ include 'exploreurFunction.php';
 
 $list = ["C://", "/mnt/", "/"];
 
-if (isset($_GET["patch"])) {
-  $path = $_GET["patch"];
+if (isset($_GET["path"])) {
+  $path = $_GET["path"];
   if (!isValidePath($path)) {
     echo "erreur chars <br>";
     echo $path.'<br>';
@@ -39,7 +39,7 @@ if (isset($_GET["patch"])) {
 }
 ?>
 <form action="" method="get">
-  <input type="text" name="patch" value="<?php echo isset($_GET["patch"])?$path:"" ?>">
+  <input type="text" name="path" value="<?php echo isset($_GET["path"])?$path:"" ?>">
   <input type="submit" name="" value="valider">
 </form>
 <br>
